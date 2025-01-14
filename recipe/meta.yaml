@@ -12,14 +12,14 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8.0
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.8.0
+    - python >={{ python_min }}
     - aiohttp >=3.8.1
     - cytoolz >=0.12.1
     - dateparser >=1.0.0
@@ -37,6 +37,7 @@ test:
     - dydx3
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
 
